@@ -9,8 +9,7 @@ public class Car {
     private String color;
     private int year;
 
-
-
+    //this contructor is for when we only have reg number when making cars from the input file
     public Car(String registration) {
         this.registration = registration;
     }
@@ -74,27 +73,7 @@ public class Car {
                 '}';
     }
 
-
-    public boolean isColorEqual(Car car){
-        return this.color.equals(car.color);
-    }
-
-    public boolean isRegistrationEqual(Car car){
-        return this.registration.equals(car.registration);
-    }
-
-    public boolean isMakeEqual(Car car){
-        return this.make.equals(car.make);
-    }
-
-    public boolean isModelEqual(Car car){
-        return this.model.equals(car.model);
-    }
-
-    public boolean isYearEqual(Car car){
-        return this.year==(car.year);
-    }
-
+    //used when comparing the input car to output car
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

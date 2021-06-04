@@ -1,4 +1,4 @@
-package tests;
+package tests.unit;
 
 import org.junit.Test;
 
@@ -15,5 +15,13 @@ public class RegistrationNumberExtractorTest {
         extractedRegistrationNumbers = RegistrationNumberExtractor.extractRegistrationNumbers();
         int numberOfItems = extractedRegistrationNumbers.size();
         assertTrue(numberOfItems>0);
+    }
+
+    @Test
+    public void testExtractOutput(){
+        ArrayList<Car> cars = new ArrayList<>();
+        cars = RegistrationNumberExtractor.extractOutput();
+        int numberOFItems = cars.size();
+        assertTrue(numberOFItems>0);
     }
 }

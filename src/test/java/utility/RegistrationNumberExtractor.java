@@ -14,11 +14,12 @@ public class RegistrationNumberExtractor {
     private static Logger log = LogManager.getLogger(RegistrationNumberExtractor.class);
 
 
+    //this method is for extracting from the input text file
     public static ArrayList<String> extractRegistrationNumbers() {
         //this is the format of a number plate, allows for a space or no space
         Pattern pattern = Pattern.compile("[A-Z]{2}[0-9]{2}\\s?[A-Z]{3}");
         ArrayList<String> extractedRegistrationNumbers = new ArrayList<>();
-        //try to take in the file and find this pattern on each line, putting into array list
+        //try to take in the file and if you see this pattern, put the text into an array list
         try {
             File inputFile = new File("car_input.txt");
             Scanner myScanner = new Scanner(inputFile);
@@ -38,11 +39,12 @@ public class RegistrationNumberExtractor {
         return extractedRegistrationNumbers;
     }
 
+    //this method is for extracting from the output text file
     public static ArrayList<Car> extractOutput() {
         ArrayList<Car> cars = new ArrayList<>();
         String[] stringarray = null;
         //try to take the file and break each line by comma, make sure first section is a reg number and
-        // then make it a car object and add to ArrayList of cars
+        //then make it a car object and add to ArrayList of cars
         try {
             File inputFile = new File("car_output.txt");
             Scanner myScanner = new Scanner(inputFile);

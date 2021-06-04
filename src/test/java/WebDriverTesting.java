@@ -26,13 +26,13 @@ public class WebDriverTesting {
         Thread.sleep(1000);
         homePageObject.submitRegistration();
         Thread.sleep(2000);
-
-        System.out.println("using the locator " + homePageObject.getRegistration());
-        System.out.println("using the locator " + homePageObject.getMake());
-        System.out.println("using the locator " + homePageObject.getModel());
-        System.out.println("using the locator " + homePageObject.getColor());
-        System.out.println("using the locator " + homePageObject.getYear());
-        System.out.println(homePageObject.getTryAgain());
+        InfoPage infoPageObject = new InfoPage(driver);
+        System.out.println("using the locator " + infoPageObject.getRegistration());
+        System.out.println("using the locator " + infoPageObject.getMake());
+        System.out.println("using the locator " + infoPageObject.getModel());
+        System.out.println("using the locator " + infoPageObject.getColor());
+        System.out.println("using the locator " + infoPageObject.getYear());
+        System.out.println(infoPageObject.getTryAgain());
         ArrayList<Car> cars = RegistrationNumberExtractor.extractOutput();
         Thread.sleep(2000);
         driver.quit();
