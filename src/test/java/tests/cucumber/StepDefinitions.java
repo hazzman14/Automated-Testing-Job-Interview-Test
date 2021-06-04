@@ -49,67 +49,80 @@ public class StepDefinitions {
     }
 
     @When("user enters their car registration number {int}")
-    public void user_enters_their_car_registration_number(int number) {
+    public void user_enters_their_car_registration_number(int number) throws InterruptedException {
         HomePage homePageObject = new HomePage(driver);
         String reg = inputFile.get(number).getRegistration();
         homePageObject.inputToRegistrationTextBox(reg);
+        Thread.sleep(2000);
         homePageObject.submitRegistration();
+        Thread.sleep(3000);
+
 
         //update the car object with new info
-        InfoPage infoPageObject = new InfoPage(driver);
-        inputFile.get(number).setMake(infoPageObject.getMake());
-        inputFile.get(number).setModel(infoPageObject.getModel());
-        inputFile.get(number).setColor(infoPageObject.getColor());
-        int year = Integer.parseInt(infoPageObject.getYear());
+        inputFile.get(number).setMake(homePageObject.getMake());
+        inputFile.get(number).setModel(homePageObject.getModel());
+        inputFile.get(number).setColor(homePageObject.getColor());
+        int year = Integer.parseInt(homePageObject.getYear());
         inputFile.get(number).setYear(year);
+
     }
 
 
     @Then("the info for car {int} appears")
     public void the_info_for_car_appear(int number) {
-        assertNotNull(inputFile.get(number));
-    }
 
-    @Then("the info for car {int} does not appear")
-    public void the_info_for_car_does_not_appear(int number) {
-        assertNull(inputFile.get(number));
+        assertNotNull(inputFile.get(number));
     }
 
     @Then("the info for car {int} registration number is correct")
     public void theInfoForCarNumberRegistrationNumberIsCorrect(int number) {
-        String actualReg = inputFile.get(number).getRegistration();
-        String expectedReg = outputFile.get(number).getRegistration();
-        assertEquals(actualReg,expectedReg);
+        for (Car c : outputFile){
+            if (c.getRegistration().equals(inputFile.get(number).getRegistration())){
+                assertEquals(c.getRegistration(),inputFile.get(number).getRegistration());
+            }
+        }
     }
 
     @Then("the info for car {int} make is correct")
     public void theInfoForCarNumberMakeIsCorrect(int number) {
-        String actualMake = inputFile.get(number).getMake();
-        String expectedMake = outputFile.get(number).getMake();
-        assertEquals(actualMake,expectedMake);
+        for (Car c : outputFile){
+            if (c.getRegistration().equals(inputFile.get(number).getRegistration())){
+                assertEquals(c.getMake(),inputFile.get(number).getMake());
+            }
+        }
     }
 
     @Then("the info for car {int} model is correct")
     public void theInfoForCarNumberModelIsCorrect(int number) {
-        String actualModel = inputFile.get(number).getMake();
-        String expectedModel = outputFile.get(number).getMake();
-        assertEquals(actualModel,expectedModel);
+        for (Car c : outputFile){
+            if (c.getRegistration().equals(inputFile.get(number).getRegistration())){
+                assertEquals(c.getModel(),inputFile.get(number).getModel());
+            }
+        }
     }
 
     @Then("the info for car {int} color is correct")
     public void theInfoForCarNumberColorIsCorrect(int number) {
-        String actualColor = inputFile.get(number).getMake();
-        String expectedColor = outputFile.get(number).getMake();
-        assertEquals(actualColor,expectedColor);
+        for (Car c : outputFile){
+            if (c.getRegistration().equals(inputFile.get(number).getRegistration())){
+                assertEquals(c.getColor(),inputFile.get(number).getColor());
+            }
+        }
     }
 
     @Then("the info for car {int} year is correct")
-    public void theInfoForCarNumberYearIsCorrect() {
+    public void theInfoForCarNumberYearIsCorrect(int number) {
+        for (Car c : outputFile){
+            if (c.getRegistration().equals(inputFile.get(number).getRegistration())){
+                assertEquals(c.getYear(),inputFile.get(number).getYear());
+            }
+        }
     }
 
     @After
     public void after(){
         driver.quit();
     }
+
 
 }

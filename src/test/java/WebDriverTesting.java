@@ -22,19 +22,20 @@ public class WebDriverTesting {
         ArrayList<String> extractedRegistrationNumbers = new ArrayList<>();
         extractedRegistrationNumbers = RegistrationNumberExtractor.extractRegistrationNumbers();
         HomePage homePageObject = new HomePage(driver);
-        homePageObject.inputToRegistrationTextBox(extractedRegistrationNumbers.get(0));
+        homePageObject.inputToRegistrationTextBox(extractedRegistrationNumbers.get(2));
         Thread.sleep(1000);
         homePageObject.submitRegistration();
-        Thread.sleep(1000);
-        InfoPage infoPageObj = new InfoPage(driver);
-        System.out.println("using the locator " + infoPageObj.getRegistration());
-        System.out.println("using the locator " + infoPageObj.getMake());
-        System.out.println("using the locator " + infoPageObj.getModel());
-        System.out.println("using the locator " + infoPageObj.getColor());
-        System.out.println("using the locator " + infoPageObj.getYear());
-        System.out.println(infoPageObj.getTryAgain());
+        Thread.sleep(2000);
+
+        System.out.println("using the locator " + homePageObject.getRegistration());
+        System.out.println("using the locator " + homePageObject.getMake());
+        System.out.println("using the locator " + homePageObject.getModel());
+        System.out.println("using the locator " + homePageObject.getColor());
+        System.out.println("using the locator " + homePageObject.getYear());
+        System.out.println(homePageObject.getTryAgain());
         ArrayList<Car> cars = RegistrationNumberExtractor.extractOutput();
-        System.out.println(cars.get(1).getColor());
+        Thread.sleep(2000);
+        driver.quit();
 
     }
 
