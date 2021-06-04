@@ -21,7 +21,7 @@ public class WebDriverTesting {
         ArrayList<String> extractedRegistrationNumbers = new ArrayList<>();
         extractedRegistrationNumbers = RegistrationNumberExtractor.extractRegistrationNumbers();
         HomePage homePageObject = new HomePage(driver);
-        homePageObject.inputToRegistrationTextBox(extractedRegistrationNumbers.get(0));
+        homePageObject.inputToRegistrationTextBox(extractedRegistrationNumbers.get(1));
         Thread.sleep(1000);
         homePageObject.submitRegistration();
         Thread.sleep(1000);
@@ -31,6 +31,7 @@ public class WebDriverTesting {
         System.out.println(infoPageObj.getModel());
         System.out.println(infoPageObj.getColor());
         System.out.println(infoPageObj.getYear());
+        System.out.println(infoPageObj.getTryAgain());
 
     }
 

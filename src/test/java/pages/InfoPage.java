@@ -11,6 +11,7 @@ public class InfoPage {
     By model = By.xpath("//dt[text()='Model']/following-sibling::dd");
     By color = By.xpath("//dt[text()='Colour']/following-sibling::dd");
     By year = By.xpath("//dt[text()='Year']/following-sibling::dd");
+    By tryAgainButton = By.linkText("Try Again");
 
 
 
@@ -19,27 +20,33 @@ public class InfoPage {
     }
 
     public String getRegistration() {
-        String toString = driver.findElement(registration).getText();
-        return toString;
+        String registrationTxt = driver.findElement(registration).getText();
+        return registrationTxt;
     }
 
     public String getMake() {
-        String toString = driver.findElement(make).getText();
-        return toString;
+        String makeTxt = driver.findElement(make).getText();
+        return makeTxt;
     }
 
     public String getModel() {
-        String toString = driver.findElement(model).getText();
-        return toString;
+        String modelTxt = driver.findElement(model).getText();
+        return modelTxt;
     }
 
     public String getColor() {
-        String toString = driver.findElement(color).getText();
-        return toString;
+        String colorTxt = driver.findElement(color).getText();
+        return colorTxt;
     }
 
     public String getYear() {
-        String toString = driver.findElement(year).getText();
-        return toString;
+        String yearTxt = driver.findElement(year).getText();
+        return yearTxt;
     }
+
+    public Boolean getTryAgain() {
+        Boolean isPresent = driver.findElements(tryAgainButton).isEmpty();
+        return isPresent;
+    }
+
 }
