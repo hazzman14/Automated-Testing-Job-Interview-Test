@@ -32,6 +32,8 @@ public class WebDriverTesting {
         System.out.println(infoPageObj.getColor());
         System.out.println(infoPageObj.getYear());
         System.out.println(infoPageObj.getTryAgain());
+        ArrayList<Car> cars = RegistrationNumberExtractor.extractOutput();
+        System.out.println(cars.get(1).getColor());
 
     }
 
