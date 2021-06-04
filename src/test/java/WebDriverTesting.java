@@ -21,7 +21,7 @@ public class WebDriverTesting {
         ArrayList<String> extractedRegistrationNumbers = new ArrayList<>();
         extractedRegistrationNumbers = RegistrationNumberExtractor.extractRegistrationNumbers();
         HomePage homePageObject = new HomePage(driver);
-        homePageObject.inputToRegistrationTextBox(extractedRegistrationNumbers.get(1));
+        homePageObject.inputToRegistrationTextBox(extractedRegistrationNumbers.get(0));
         Thread.sleep(1000);
         homePageObject.submitRegistration();
         Thread.sleep(1000);

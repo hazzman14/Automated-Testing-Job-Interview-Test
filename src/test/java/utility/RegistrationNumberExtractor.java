@@ -28,6 +28,7 @@ public class RegistrationNumberExtractor {
                 while (matcher.find()) {
                     log.info("found: " + matcher.group());
                     extractedRegistrationNumbers.add(matcher.group());
+                    System.out.println("printing: " + matcher.group());
                 }
             }
             myScanner.close();

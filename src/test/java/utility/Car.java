@@ -10,6 +10,11 @@ public class Car {
     public Car() {
     }
 
+
+    public Car(String registration) {
+        this.registration = registration;
+    }
+
     public Car(String registration, String make, String model, String color, int year) {
         this.registration = registration;
         this.make = make;
