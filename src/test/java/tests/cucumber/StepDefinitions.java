@@ -25,6 +25,7 @@ public class StepDefinitions {
 
     @Before
     public void setUp(){
+        //define the Array Lists that are used
         ArrayList<String> extractedRegistrationNumbers = RegistrationNumberExtractor.extractRegistrationNumbers();
 
         outputFile = RegistrationNumberExtractor.extractOutput();
@@ -39,8 +40,6 @@ public class StepDefinitions {
 //            inputFile.add(car);
 //        }
     }
-
-
 
     @Given("user opens chrome and goes to cartextcheck.co.uk")
     public void userOpensChromeAndGoesToCartextcheckCoUk() {
@@ -65,6 +64,7 @@ public class StepDefinitions {
         inputFile.get(number).setYear(year);
     }
 
+
     @Then("the info for car {int} appears")
     public void the_info_for_car_appear(int number) {
         assertNotNull(inputFile.get(number));
@@ -82,8 +82,34 @@ public class StepDefinitions {
         assertEquals(actualReg,expectedReg);
     }
 
+    @Then("the info for car {int} make is correct")
+    public void theInfoForCarNumberMakeIsCorrect(int number) {
+        String actualMake = inputFile.get(number).getMake();
+        String expectedMake = outputFile.get(number).getMake();
+        assertEquals(actualMake,expectedMake);
+    }
+
+    @Then("the info for car {int} model is correct")
+    public void theInfoForCarNumberModelIsCorrect(int number) {
+        String actualModel = inputFile.get(number).getMake();
+        String expectedModel = outputFile.get(number).getMake();
+        assertEquals(actualModel,expectedModel);
+    }
+
+    @Then("the info for car {int} color is correct")
+    public void theInfoForCarNumberColorIsCorrect(int number) {
+        String actualColor = inputFile.get(number).getMake();
+        String expectedColor = outputFile.get(number).getMake();
+        assertEquals(actualColor,expectedColor);
+    }
+
+    @Then("the info for car {int} year is correct")
+    public void theInfoForCarNumberYearIsCorrect() {
+    }
+
     @After
     public void after(){
         driver.quit();
     }
+
 }

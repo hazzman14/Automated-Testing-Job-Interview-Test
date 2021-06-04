@@ -16,6 +16,7 @@ public class WebDriverTesting {
         driver = new ChromeDriver();
         driver.get("https://cartaxcheck.co.uk/");
         Thread.sleep(1000);
+        driver.manage().window().maximize();
 
 
         ArrayList<String> extractedRegistrationNumbers = new ArrayList<>();
@@ -26,11 +27,11 @@ public class WebDriverTesting {
         homePageObject.submitRegistration();
         Thread.sleep(1000);
         InfoPage infoPageObj = new InfoPage(driver);
-        System.out.println(infoPageObj.getRegistration());
-        System.out.println(infoPageObj.getMake());
-        System.out.println(infoPageObj.getModel());
-        System.out.println(infoPageObj.getColor());
-        System.out.println(infoPageObj.getYear());
+        System.out.println("using the locator " + infoPageObj.getRegistration());
+        System.out.println("using the locator " + infoPageObj.getMake());
+        System.out.println("using the locator " + infoPageObj.getModel());
+        System.out.println("using the locator " + infoPageObj.getColor());
+        System.out.println("using the locator " + infoPageObj.getYear());
         System.out.println(infoPageObj.getTryAgain());
         ArrayList<Car> cars = RegistrationNumberExtractor.extractOutput();
         System.out.println(cars.get(1).getColor());

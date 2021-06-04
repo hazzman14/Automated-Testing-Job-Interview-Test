@@ -2,15 +2,32 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class InfoPage {
 
     WebDriver driver;
-    By registration = By.xpath("//dt[text()='Registration']/following-sibling::dd");
-    By make = By.xpath("//dt[text()='Make']/following-sibling::dd");
-    By model = By.xpath("//dt[text()='Model']/following-sibling::dd");
-    By color = By.xpath("//dt[text()='Colour']/following-sibling::dd");
-    By year = By.xpath("//dt[text()='Year']/following-sibling::dd");
+
+    //I found that a pay element popped up about 1 in 6 times and ruined my By's so i made 2 By's and then check if the element exists and decide which to use
+    By annoyingElement = By.id("checkout-form");
+
+    By registration = By.cssSelector("#m > div.jsx-79705764 > div:nth-child(5) > div.jsx-1843467667 > div > span > div.jsx-3499070155 > dl:nth-child(1) > dd");
+    By registrationWithElement = By.cssSelector("#m > div.jsx-79705764 > div:nth-child(6) > div.jsx-1843467667 > div > span > div.jsx-3499070155 > dl:nth-child(1) > dd");
+
+    By make = By.cssSelector("#m > div.jsx-79705764 > div:nth-child(5) > div.jsx-1843467667 > div > span > div.jsx-3499070155 > dl:nth-child(2) > dd");
+    By makeWithElement = By.cssSelector("#m > div.jsx-79705764 > div:nth-child(6) > div.jsx-1843467667 > div > span > div.jsx-3499070155 > dl:nth-child(2) > dd");
+
+    By model = By.cssSelector("#m > div.jsx-79705764 > div:nth-child(5) > div.jsx-1843467667 > div > span > div.jsx-3499070155 > dl:nth-child(3) > dd");
+    By modelWithElement = By.cssSelector("#m > div.jsx-79705764 > div:nth-child(6) > div.jsx-1843467667 > div > span > div.jsx-3499070155 > dl:nth-child(3) > dd");
+
+    By color = By.cssSelector("#m > div.jsx-79705764 > div:nth-child(5) > div.jsx-1843467667 > div > span > div.jsx-3499070155 > dl:nth-child(4) > dd");
+    By colorWithElement = By.cssSelector("#m > div.jsx-79705764 > div:nth-child(6) > div.jsx-1843467667 > div > span > div.jsx-3499070155 > dl:nth-child(4) > dd");
+
+    By year = By.cssSelector("#m > div.jsx-79705764 > div:nth-child(5) > div.jsx-1843467667 > div > span > div.jsx-3499070155 > dl:nth-child(5) > dd");
+    By yearWithElement = By.cssSelector("#m > div.jsx-79705764 > div:nth-child(6) > div.jsx-1843467667 > div > span > div.jsx-3499070155 > dl:nth-child(5) > dd");
+
+
+
     By tryAgainButton = By.linkText("Try Again");
 
 
@@ -20,28 +37,48 @@ public class InfoPage {
     }
 
     public String getRegistration() {
-        String registrationTxt = driver.findElement(registration).getText();
-        return registrationTxt;
+        Boolean isPresent = driver.findElements(annoyingElement).size() > 0;
+        if(isPresent){
+            return driver.findElement(registrationWithElement).getText();
+        }else{
+            return driver.findElement(registration).getText();
+        }
     }
 
     public String getMake() {
-        String makeTxt = driver.findElement(make).getText();
-        return makeTxt;
+        Boolean isPresent = driver.findElements(annoyingElement).size() > 0;
+        if(isPresent){
+            return driver.findElement(makeWithElement).getText();
+        }else{
+            return driver.findElement(make).getText();
+        }
     }
 
     public String getModel() {
-        String modelTxt = driver.findElement(model).getText();
-        return modelTxt;
+        Boolean isPresent = driver.findElements(annoyingElement).size() > 0;
+        if(isPresent){
+            return driver.findElement(modelWithElement).getText();
+        }else{
+            return driver.findElement(model).getText();
+        }
     }
 
     public String getColor() {
-        String colorTxt = driver.findElement(color).getText();
-        return colorTxt;
+        Boolean isPresent = driver.findElements(annoyingElement).size() > 0;
+        if(isPresent){
+            return driver.findElement(colorWithElement).getText();
+        }else{
+            return driver.findElement(color).getText();
+        }
     }
 
     public String getYear() {
-        String yearTxt = driver.findElement(year).getText();
-        return yearTxt;
+        Boolean isPresent = driver.findElements(annoyingElement).size() > 0;
+        if(isPresent){
+            return driver.findElement(yearWithElement).getText();
+        }else{
+            return driver.findElement(year).getText();
+        }
     }
 
     public Boolean getTryAgain() {
