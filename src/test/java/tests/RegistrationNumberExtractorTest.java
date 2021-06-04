@@ -1,10 +1,9 @@
 package tests;
 
 import org.junit.Test;
-import utility.RegistrationNumberExtractor;
 
 import java.util.ArrayList;
-
+import utility.*;
 import static org.junit.Assert.*;
 
 
