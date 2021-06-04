@@ -57,6 +57,10 @@ public class StepDefinitions {
         homePageObject.submitRegistration();
         Thread.sleep(3000);
 
+    }
+
+    @Then("the info for car {int} appears")
+    public void TheInfoForCarAppears(int number) throws InterruptedException {
         //once the page loads we take the info and add it to our car object that currently only has reg number
         InfoPage infoPageObject = new InfoPage(driver);
         inputFile.get(number).setMake(infoPageObject.getMake());
@@ -64,11 +68,8 @@ public class StepDefinitions {
         inputFile.get(number).setColor(infoPageObject.getColor());
         int year = Integer.parseInt(infoPageObject.getYear());
         inputFile.get(number).setYear(year);
+        Thread.sleep(2000);
 
-    }
-
-    @Then("the info for car {int} appears")
-    public void TheInfoForCarAppears(int number) {
         assertNotNull(inputFile.get(number));
     }
 
