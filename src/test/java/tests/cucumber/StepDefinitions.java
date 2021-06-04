@@ -48,7 +48,7 @@ public class StepDefinitions {
 
 
     @When("user enters their car registration number {int}")
-    public void user_enters_their_car_registration_number(int number) throws InterruptedException {
+    public void UserEntersTheirCarRegistrationNumber(int number) throws InterruptedException {
         HomePage homePageObject = new HomePage(driver);
         //we get the reg from the inputfile arraylist and put it into the textbox, and click the submit button
         String reg = inputFile.get(number).getRegistration();
@@ -68,7 +68,7 @@ public class StepDefinitions {
     }
 
     @Then("the info for car {int} appears")
-    public void the_info_for_car_appear(int number) {
+    public void TheInfoForCarAppears(int number) {
         assertNotNull(inputFile.get(number));
     }
 

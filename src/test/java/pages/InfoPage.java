@@ -82,10 +82,4 @@ public class InfoPage {
             return driver.findElement(year).getText();
         }
     }
-
-    public Boolean getTryAgain() {
-        Boolean isPresent = driver.findElements(tryAgainButton).isEmpty();
-        return isPresent;
-    }
-
 }

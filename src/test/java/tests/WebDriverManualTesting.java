@@ -1,14 +1,17 @@
+package tests;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.HomePage;
 import pages.InfoPage;
 import utility.*;
-
-
 import java.util.ArrayList;
 
-public class WebDriverTesting {
-
+//This class was here for some early testing of the methods before i had implemented cucumber fully
+public class WebDriverManualTesting {
+    private static Logger log = LogManager.getLogger(RegistrationNumberExtractor.class);
     private static WebDriver driver;
 
     public static void main(String[] args) throws InterruptedException {
@@ -19,21 +22,24 @@ public class WebDriverTesting {
         driver.manage().window().maximize();
 
 
+        //testing the input string and submit
         ArrayList<String> extractedRegistrationNumbers = new ArrayList<>();
         extractedRegistrationNumbers = RegistrationNumberExtractor.extractRegistrationNumbers();
         HomePage homePageObject = new HomePage(driver);
         homePageObject.inputToRegistrationTextBox(extractedRegistrationNumbers.get(2));
         Thread.sleep(1000);
         homePageObject.submitRegistration();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
+
+        //this was for testing my locators
         InfoPage infoPageObject = new InfoPage(driver);
-        System.out.println("using the locator " + infoPageObject.getRegistration());
-        System.out.println("using the locator " + infoPageObject.getMake());
-        System.out.println("using the locator " + infoPageObject.getModel());
-        System.out.println("using the locator " + infoPageObject.getColor());
-        System.out.println("using the locator " + infoPageObject.getYear());
-        System.out.println(infoPageObject.getTryAgain());
-        ArrayList<Car> cars = RegistrationNumberExtractor.extractOutput();
+        log.info(infoPageObject.getRegistration());
+        log.info(infoPageObject.getMake());
+        log.info(infoPageObject.getModel());
+        log.info(infoPageObject.getColor());
+        log.info(infoPageObject.getYear());
+
+
         Thread.sleep(2000);
         driver.quit();
 

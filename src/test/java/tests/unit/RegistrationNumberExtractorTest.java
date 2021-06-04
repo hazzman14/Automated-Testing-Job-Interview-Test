@@ -21,7 +21,7 @@ public class RegistrationNumberExtractorTest {
     public void testExtractOutput(){
         ArrayList<Car> cars = new ArrayList<>();
         cars = RegistrationNumberExtractor.extractOutput();
-        int numberOFItems = cars.size();
-        assertTrue(numberOFItems>0);
+        int numberOfItems = cars.size();
+        assertTrue(numberOfItems>0);
     }
 }
